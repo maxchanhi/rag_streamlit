@@ -1,2 +1,6 @@
-male_voices = ["Bass","Baritone","Tenor","max's voice"]
+male_voices = ["Bass","Baritone","Tenor"]
 female_voices = ["Alto","Mezzo-soprano","Soprano"]
+voice_tpyes from low to top=male_voices+female_voices
+
+
+This streamlit app is created by Chan Chak Hang Max 
