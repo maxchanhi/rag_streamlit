@@ -64,7 +64,3 @@ if st.button("Generate Feedback"):
     feedback = rag_feedback(student_result)
     st.write("Feedback:")
     st.write(feedback)
-
-if __name__=="__main__":
-    feedback= None
-    rag_feedback(feedback)
