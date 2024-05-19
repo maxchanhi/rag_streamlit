@@ -8,7 +8,7 @@ def rag_feedback(student_result):
     from langchain_community.vectorstores import FAISS
     from langchain.prompts import ChatPromptTemplate
     from langchain_community.chat_models import ChatOpenAI
-    DOC_PATH = "/Users/chakhangchan/Documents/VS_code/Music_theory_app/AI_feedback/instrument_knowledge_quiz/knowledge.txt"
+    DOC_PATH = "knowledge.txt"
 
 # Set up OpenAI API key
     OPENAI_API_KEY = st.secrets["OpenAI_key"]
