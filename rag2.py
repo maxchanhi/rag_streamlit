@@ -1,5 +1,6 @@
 
 import streamlit as st
+import time
 def rag_feedback(student_result):
     import os
     from langchain.document_loaders import TextLoader
@@ -61,4 +62,5 @@ with st.expander("Chat with AI"):
         st.write(f"User: {prompt}")
         feedback = rag_feedback(prompt)
         st.write(f"AI: {feedback}")
+        time.sleep(5)
 
