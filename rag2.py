@@ -56,11 +56,9 @@ def rag_feedback(student_result):
 # Streamlit app code
 st.title("Music Theory Feedback")
 
-# Get student result input
-student_result = st.text_area("Enter the student's music theory result:")
+prompt = st.chat_input("Ask me anything you want to know about music theory:")
+if prompt:
+    st.write(f"User: {prompt}")
+    feedback = rag_feedback(prompt)
+    st.write(f"AI: {feedback}")
 
-if st.button("Generate Feedback"):
-    # Provide feedback using the retrieval and generation process
-    feedback = rag_feedback(student_result)
-    st.write("Feedback:")
-    st.write(feedback)
