@@ -56,7 +56,7 @@ def rag_feedback(student_result):
 
 # Streamlit app code
 st.title("Music Theory Feedback")
-with st.expander("Chat with AI"):
+with st.popover("Chat with AI"):
     prompt = st.chat_input("Ask me anything you want to know about music theory:")
     if prompt:
         st.write(f"User: {prompt}")
