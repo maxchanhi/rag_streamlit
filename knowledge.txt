@@ -1,0 +1,2 @@
+male_voices = ["Bass","Baritone","Tenor","max's voice"]
+female_voices = ["Alto","Mezzo-soprano","Soprano"]
