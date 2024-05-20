@@ -89,4 +89,35 @@ instrumental_families = {
     "indefinite pitch percussion":["snare drum", "bass drum", "tambourine","cymbals", "triangle"],
     "definite pitch percussion":["xylophone", "marimba", "vibraphone", "glockenspiel","timpani"]
     }
+
+#how to identify an interval
+#step1: Always counts from the lower pitch e.g.: Cb4 to Eb4, starts from Cb4. e.g. C4 to Fb3, starts from Fb3 since Fb3 is lower
+#step2: only counts english letter（ABCDEFG）also counts the starting note e.g.: Cb4 to Eb4 = CDE = 3rd. e.g. C4 to Fb3, starts from Fb3, F G A B C= 5th
+#step3: count the semitone  also counts the starting note C C#/Db D D#/Eb E F F#/Gb G G#/Ab A A#/Bb B C' e.g.: Cb4 to Eb4 = Cb/B C C# D D#/Eb = 5 semitones. e.g. C4 to Fb3, Fb F F# G G# A A# B C = 9 semitones
+JUMP_CHART = {#tuple[0] is the result of counts english letter（ABCDEFG）step2,tuple[1] is the result of semitonestep3. Use JUMP_CHART to find the quality
+
+    ('2', '1'): "Diminished", ('2', '2'): "Minor",
+    ('2', '3'): "Major", ('2', '4'): "Augmented",
+    
+    ('3', '3'): "Diminished",('3', '4'): "Minor",
+    ('3', '5'): "Major", ('3', '6'): "Augmented",
+    
+    ('4', '5'): "Diminished",
+    ('4', '6'): "Perfect",('4', '7'): "Augmented",
+    
+    ('5', '7'): "Diminished",
+    ('5', '8'): "Perfect",('5', '9'): "Augmented",
+    
+    ('6', '8'): "Diminished",('6', '9'): "Minor",
+    ('6', '10'): "Major",('6', '11'): "Augmented",
+    
+    ('0', '10'): "Diminished",('0', '11'): "Minor",
+    ('0', '12'): "Major",('0', '13'): "Augmented",
+    
+    ('1', '2'): "Diminished",
+    ('1', '13'): "Perfect",('1', '14'): "Augmented",
+    ('1', '1'): "Perfect",('1', '12'): "Augmented"
+}
+#according to the chart Cb4 to Eb4 is Major 3rd
+#so C4 to Fb3 is Augmented 5th
 This streamlit app is created by Chan Chak Hang Max 
