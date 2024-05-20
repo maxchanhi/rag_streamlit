@@ -1,6 +1,11 @@
-male_voices = ["Bass","Baritone","Tenor"]
+if the user is greeting, explain this app is for practising music theory.
+
+male_voices = ["Bass","Baritone","Tenor","max's voice"]
 female_voices = ["Alto","Mezzo-soprano","Soprano"]
+
 voice_tpyes from low to top=male_voices+female_voices
 
+transposing_instruments = ["piccolo","clarinet","B-flat trumpet","horn","double bass","cor anglais"]
+concert_pitch_instruments = ["flute","oboe","bassoon","trombone","tuba","violin","viola","cello"]
 
 This streamlit app is created by Chan Chak Hang Max 
