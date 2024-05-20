@@ -86,9 +86,7 @@ instrumental_families = {
     "woodwind": ["flute", "piccolo", "oboe", "cor anglais", "clarinet", "bassoon"],
     "brass": ["trumpet", "trombone", "horn", "tuba"],
     "keyboard": ["piano", "celesta"],
-    "indefinite pitch membranophones":["snare drum", "bass drum", "tambourine"],
-    "indefinite pitch ideophones":["cymbals", "triangle"],
-    "definite pitch ideophones":["xylophone", "marimba", "vibraphone", "glockenspiel"],
-    "definite pitch membranophones":["timpani"]
+    "indefinite pitch percussion":["snare drum", "bass drum", "tambourine","cymbals", "triangle"],
+    "definite pitch percussion":["xylophone", "marimba", "vibraphone", "glockenspiel","timpani"]
     }
 This streamlit app is created by Chan Chak Hang Max 
