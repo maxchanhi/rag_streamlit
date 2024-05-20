@@ -5,7 +5,7 @@ from streamlit_modal import Modal
 def rag_feedback(student_result):
     import os
     from langchain_community.document_loaders import TextLoader
-    from langchain_community.text_splitter import RecursiveCharacterTextSplitter
+    from langchain.text_splitter import RecursiveCharacterTextSplitter
     from langchain_community.embeddings import OpenAIEmbeddings
     from langchain_community.vectorstores import FAISS
     from langchain_community.prompts import ChatPromptTemplate
