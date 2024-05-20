@@ -55,34 +55,25 @@ def rag_feedback(student_result):
     feedback = model.predict(prompt)
     return feedback
     
-if "user_pwed" not in st.session_state:
-    st.session_state["user_pwed"] = False
-    st.session_state.password=None
-    
-def dialog_password_submit_button_clicked():
-    if st.session_state.password in st.secrets["Password"]:
-        st.session_state["user_pwed"] = True
-        st.toast('You can have full access')
-        st.success("You are logged in")
+pw = st.secrets["Password"]
+
+if "login" not in st.session_state:
+    st.session_state["login"] = False
+    st.session_state["pw"] = ""
+
+def login_button_clicked():
+    if st.session_state["pw"] == pw:
+        st.session_state["login"] = True
     else:
-        st.warning("Please check your password")
-    dialog.close()
+        st.error("Wrong password")
 
-if not st.session_state["user_pwed"]:
-    dialog = Modal(
-    "Demo Modal", 
-    key="demo-modal",
-)
-
-    with dialog:
-        st.session_state.password= st.text_input("Password", type="password", key="password")
-        st.form_submit_button("Submit", on_click=dialog_password_submit_button_clicked)
-
-    if st.button("Open Password Dialog", key="password_dialog_button"):
-        dialog.open()
-elif st.session_state["user_pwed"]:
-    st.write("You have full access to the app!")
-
+if st.session_state["login"] == False:
+    with st.popover(label="Login"):
+        with st.form(key="login_form"):
+            st.session_state["pw"] = st.text_input("Password", key="pwinput", type="password")
+            st.form_submit_button("OK", on_click=login_button_clicked)
+elif st.session_state["login"]:
+    st.write("You are logged in!")
 
 # Streamlit app code
 st.title("Music Theory Feedback")
