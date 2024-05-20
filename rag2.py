@@ -61,6 +61,8 @@ if not st.session_state["user_pwed"]:
         st.session_state["user_pwed"]=True
         st.toast('You can have full access')
         st.success("You are logged in")
+        time.sleep(3)
+        st.rerun()
     else:
         st.warning("Please check your password")
 
