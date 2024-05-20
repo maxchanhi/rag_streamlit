@@ -53,6 +53,16 @@ def rag_feedback(student_result):
     model = ChatOpenAI(openai_api_key=OPENAI_API_KEY)
     feedback = model.predict(prompt)
     return feedback
+if "user_pw" not in st.session_state:
+    st.session_state["user_pwed"]=None
+if not st.session_state["user_pwed"]:
+    pw=st.text_input("Enter your password",disabled= st.session_state["user_pwed"])
+    if pw in st.secrets["Password"]:
+        st.session_state["user_pwed"]=True
+        st.toast('You can have full access')
+        st.success("You are logged in")
+    else:
+        st.warning("Please check your password")
 
 # Streamlit app code
 st.title("Music Theory Feedback")
