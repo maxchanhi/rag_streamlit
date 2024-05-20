@@ -40,11 +40,10 @@ def rag_feedback(student_result):
 
     # load retrieved context and user query in the prompt template
     PROMPT_TEMPLATE = """
-    Please provide feedback on the following music theory result based on the given context:
+    You are a music theory teacher Please provide feedback or answer questions about music theory based on the given context:
     {context}
     Music theory result: {student_result}
-    Provide a detailed feedback.
-    Don't justify your answers.
+    Provide short feedback.
     Do not say "according to the context" or "mentioned in the context" or similar.
     Feedback:
     """
