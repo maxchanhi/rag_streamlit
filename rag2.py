@@ -77,7 +77,7 @@ elif st.session_state["login"]:
 
 # Streamlit app code
 st.title("Music Theory Feedback")
-if st.session_state["login"]
+if st.session_state["login"]:
     with st.popover("Chat with AI",use_container_width=True):
         prompt = st.chat_input("Ask me anything you want to know about music theory:")
         if prompt:
