@@ -53,21 +53,38 @@ def rag_feedback(student_result):
     model = ChatOpenAI(openai_api_key=OPENAI_API_KEY)
     feedback = model.predict(prompt)
     return feedback
-if "user_pw" not in st.session_state:
-    st.session_state["user_pwed"]= False
-if st.session_state["user_pwed"]==False:
-    pw=st.text_input("Enter your password")
-    if pw in st.secrets["Password"]:
-        st.session_state["user_pwed"]=True
+    
+if "user_pwed" not in st.session_state:
+    st.session_state["user_pwed"] = False
+    st.session_state.password=None
+    
+def dialog_password_submit_button_clicked():
+    if st.session_state.password in st.secrets["Password"]:
+        st.session_state["user_pwed"] = True
         st.toast('You can have full access')
         st.success("You are logged in")
-    elif pw not in st.secrets["Password"]:
-        st.warning("Please check your password")
     else:
-        st.warning("Please enter your password")
+        st.warning("Please check your password")
+    dialog.close()
+
+if not st.session_state["user_pwed"]:
+    dialog = st.dialog(
+        "password_dialog", title="Enter Password",
+        can_be_closed=True)
+
+    with dialog:
+        st.session_state.password= st.text_input("Password", type="password", key="password")
+        st.form_submit_button("Submit", on_click=dialog_password_submit_button_clicked)
+
+    if st.button("Open Password Dialog", key="password_dialog_button"):
+        dialog.open()
+elif st.session_state["user_pwed"]:
+    st.write("You have full access to the app!")
+
 
 # Streamlit app code
 st.title("Music Theory Feedback")
+
 with st.popover("Chat with AI"):
     prompt = st.chat_input("Ask me anything you want to know about music theory:")
     if prompt:
