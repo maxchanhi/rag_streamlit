@@ -4,10 +4,10 @@ import time
 def rag_feedback(student_result):
     import os
     from langchain_community.document_loaders import TextLoader
-    from langchain.text_splitter import RecursiveCharacterTextSplitter
+    from langchain_community.text_splitter import RecursiveCharacterTextSplitter
     from langchain_community.embeddings import OpenAIEmbeddings
     from langchain_community.vectorstores import FAISS
-    from langchain.prompts import ChatPromptTemplate
+    from langchain_community.prompts import ChatPromptTemplate
     from langchain_community.chat_models import ChatOpenAI
     DOC_PATH = "knowledge.txt"
 
