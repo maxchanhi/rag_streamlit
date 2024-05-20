@@ -70,8 +70,7 @@ def dialog_password_submit_button_clicked():
 
 if not st.session_state["user_pwed"]:
     dialog = Modal(
-        "password_dialog", title="Enter Password",
-        can_be_closed=True)
+        "Enter Password", key="password_dialog")
 
     with dialog:
         st.session_state.password= st.text_input("Password", type="password", key="password")
