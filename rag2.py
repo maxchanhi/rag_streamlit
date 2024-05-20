@@ -40,7 +40,7 @@ def rag_feedback(student_result):
 
     # load retrieved context and user query in the prompt template
     PROMPT_TEMPLATE = """
-    You are a music theory teacher Please provide feedback or answer questions about music theory based on the given context:
+    You are a music theory teacher. Please provide feedback or answer questions about music theory based on the given context:
     {context}
     Music theory result: {student_result}
     Provide short feedback.
