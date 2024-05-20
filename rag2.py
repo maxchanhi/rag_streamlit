@@ -77,12 +77,12 @@ elif st.session_state["login"]:
 
 # Streamlit app code
 st.title("Music Theory Feedback")
-
-with st.popover("Chat with AI"):
-    prompt = st.chat_input("Ask me anything you want to know about music theory:")
-    if prompt:
-        st.write(f"User: {prompt}")
-        feedback = rag_feedback(prompt)
-        st.write(f"AI: {feedback}")
-        time.sleep(5)
+if st.session_state["login"]
+    with st.popover("Chat with AI",use_container_width=True):
+        prompt = st.chat_input("Ask me anything you want to know about music theory:")
+        if prompt:
+            st.write(f"User: {prompt}")
+            feedback = rag_feedback(prompt)
+            st.write(f"AI: {feedback}")
+            time.sleep(5)
 
