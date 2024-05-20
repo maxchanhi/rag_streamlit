@@ -1,3 +1,4 @@
+import time
 
 import streamlit as st
 from streamlit_modal import Modal
