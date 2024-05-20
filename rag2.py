@@ -61,10 +61,10 @@ if not st.session_state["user_pwed"]:
         st.session_state["user_pwed"]=True
         st.toast('You can have full access')
         st.success("You are logged in")
-        time.sleep(3)
-        st.rerun()
-    else:
+    elif pw not in st.secrets["Password"]:
         st.warning("Please check your password")
+    else:
+        st.warning("Please enter your password")
 
 # Streamlit app code
 st.title("Music Theory Feedback")
