@@ -69,7 +69,7 @@ def dialog_password_submit_button_clicked():
     dialog.close()
 
 if not st.session_state["user_pwed"]:
-    dialog = st.dialog(
+    dialog = Modal(
         "password_dialog", title="Enter Password",
         can_be_closed=True)
 
