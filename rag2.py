@@ -54,9 +54,9 @@ def rag_feedback(student_result):
     feedback = model.predict(prompt)
     return feedback
 if "user_pw" not in st.session_state:
-    st.session_state["user_pwed"]=None
+    st.session_state["user_pwed"]= False
 if not st.session_state["user_pwed"]:
-    pw=st.text_input("Enter your password",disabled= st.session_state["user_pwed"])
+    pw=st.text_input("Enter your password",disabled=st.session_state["user_pwed"])
     if pw in st.secrets["Password"]:
         st.session_state["user_pwed"]=True
         st.toast('You can have full access')
