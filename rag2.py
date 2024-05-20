@@ -62,7 +62,7 @@ if "login" not in st.session_state:
     st.session_state["pw"] = ""
 
 def login_button_clicked():
-    if st.session_state["pw"] == pw:
+    if st.session_state["pw"] in pw:
         st.session_state["login"] = True
     else:
         st.error("Wrong password")
