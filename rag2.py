@@ -1,7 +1,7 @@
 import time
 
 import streamlit as st
-from streamlit_modal import Modal
+
 
 def rag_feedback(student_result):
     from streamlit_modal import Modal
