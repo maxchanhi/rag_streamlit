@@ -14,7 +14,7 @@ def rag_feedback(student_result):
     OPENAI_API_KEY = st.secrets["OpenAI_key"]
 
     # Load the precomputed FAISS index from disk
-    db_faiss = FAISS.load_local(INDEX_PATH, embeddings=None)
+    db_faiss = FAISS.load_local(INDEX_PATH, embeddings=None, allow_dangerous_deserialization=True)
     st.write("Getting knowledge at database.")
     print("Getting knowledge at database.")
     docs_faiss = db_faiss.similarity_search(student_result, k=5)
