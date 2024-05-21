@@ -32,7 +32,7 @@ def rag_feedback(student_result):
     Feedback:
     """
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
-    prompt = prompt_template.format(context=context_text, student_result=formatted_result)
+    prompt = prompt_template.format(context=context_text, student_result=student_result)
 
     # Call LLM model to generate the feedback based on the given context and student result
     model = ChatOpenAI(openai_api_key=OPENAI_API_KEY)
