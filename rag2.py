@@ -1,17 +1,22 @@
 import time
 import streamlit as st
+from langchain.embeddings import OpenAIEmbeddings
+
+# Function to provide feedback based on student's music theory results
 def rag_feedback(student_result):
-    from streamlit_modal import Modal
     from langchain_community.vectorstores import FAISS
     from langchain.prompts import ChatPromptTemplate
     from langchain_community.chat_models import ChatOpenAI
 
     INDEX_PATH = "faiss_index"
-
     OPENAI_API_KEY = st.secrets["OpenAI_key"]
 
-    # Load the precomputed FAISS index from disk
-    db_faiss = FAISS.load_local(INDEX_PATH, embeddings=None, allow_dangerous_deserialization=True)
+    # Create an Embeddings object
+    embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
+    
+    # Load the precomputed FAISS index from disk with the embeddings object
+    db_faiss = FAISS.load_local(INDEX_PATH, embeddings=embeddings, allow_dangerous_deserialization=True)
+    st.write("Getting knowledge at database.")
     print("Getting knowledge at database.")
     docs_faiss = db_faiss.similarity_search(student_result, k=5)
 
@@ -34,20 +39,24 @@ def rag_feedback(student_result):
     model = ChatOpenAI(openai_api_key=OPENAI_API_KEY)
     feedback = model.predict(prompt)
     return feedback
-    
+
+# Retrieve the password from Streamlit secrets
 pw = st.secrets["Password"]
 
+# Initialize session state variables for login
 if "login" not in st.session_state:
     st.session_state["login"] = False
     st.session_state["pw"] = ""
 
+# Function to handle login button click
 def login_button_clicked():
-    if st.session_state["pw"] in pw:
+    if st.session_state["pw"] == pw:
         st.session_state["login"] = True
     else:
         st.error("Wrong password")
 
-if st.session_state["login"] == False:
+# Login form
+if not st.session_state["login"]:
     with st.popover(label="Login"):
         with st.form(key="login_form"):
             st.session_state["pw"] = st.text_input("Password", key="pwinput", type="password")
@@ -55,15 +64,13 @@ if st.session_state["login"] == False:
 elif st.session_state["login"]:
     st.write("You are logged in!")
 
-# Streamlit app code
+# Main Streamlit app code
 st.title("Music Theory Feedback")
 if st.session_state["login"]:
-    with st.popover("Chat with AI",use_container_width=True):
+    with st.popover("Chat with AI", use_container_width=True):
         prompt = st.chat_input("Ask me anything you want to know about music theory:")
         if prompt:
-            print(prompt)
             st.write(f"User: {prompt}")
             feedback = rag_feedback(prompt)
             st.write(f"AI: {feedback}")
             time.sleep(5)
-
