@@ -1,7 +1,3 @@
-import time
-
-import streamlit as st
-
 
 def rag_feedback(student_result):
     from streamlit_modal import Modal
@@ -15,7 +11,6 @@ def rag_feedback(student_result):
 
     # Load the precomputed FAISS index from disk
     db_faiss = FAISS.load_local(INDEX_PATH, embeddings=None, allow_dangerous_deserialization=True)
-    st.write("Getting knowledge at database.")
     print("Getting knowledge at database.")
     docs_faiss = db_faiss.similarity_search(student_result, k=5)
 
@@ -65,6 +60,7 @@ if st.session_state["login"]:
     with st.popover("Chat with AI",use_container_width=True):
         prompt = st.chat_input("Ask me anything you want to know about music theory:")
         if prompt:
+            print(prompt)
             st.write(f"User: {prompt}")
             feedback = rag_feedback(prompt)
             st.write(f"AI: {feedback}")
