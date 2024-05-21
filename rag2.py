@@ -15,7 +15,8 @@ def rag_feedback(student_result):
 
     # Load the precomputed FAISS index from disk
     db_faiss = FAISS.read_index(INDEX_PATH)
-
+    st.write("Getting knowledge at database.")
+    print("Getting knowledge at database.")
     docs_faiss = db_faiss.similarity_search(student_result, k=5)
 
     # Generate an answer based on given user query and retrieved context information
