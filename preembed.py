@@ -16,11 +16,8 @@ def rag_feedback(student_result):
     # Load the precomputed FAISS index from disk
     db_faiss = FAISS.read_index(INDEX_PATH)
 
-    # Format student_result into a string
-    formatted_result = "\n".join([f"Question: {item[0]}\nAnswer: {item[1]}\nResult: {item[2]}" for item in student_result])
-
     # Retrieve context - top 5 most relevant (closest) chunks to the query vector
-    docs_faiss = db_faiss.similarity_search(formatted_result, k=5)
+    docs_faiss = db_faiss.similarity_search(student_result, k=5)
 
     # Generate an answer based on given user query and retrieved context information
     context_text = "\n\n".join([doc.page_content for doc in docs_faiss])
